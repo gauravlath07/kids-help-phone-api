@@ -66,7 +66,7 @@ class MentalTruth:
 		return tweet_stem
 
 	def iterate_twitter(self, twitter_handle):
-		for tweet in tweepy.Cursor(self.twitter_api.user_timeline, screen_name=twitter_handle).items():
+		for tweet in tweepy.Cursor(self.twitter_api.user_timeline, screen_name=twitter_handle).items(900):
 			sentiment = None
 			self.tweet_count += 1
 			tweet_text = json.dumps(tweet._json)
