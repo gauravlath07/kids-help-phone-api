@@ -5,6 +5,7 @@ import sys
 import time
 import re
 import nltk
+import datetime, time
 from sklearn.externals import joblib
 from tweepy import Stream
 from tweepy import OAuthHandler
@@ -66,7 +67,7 @@ class MentalTruth:
 		return tweet_stem
 
 	def iterate_twitter(self, twitter_handle):
-		for tweet in tweepy.Cursor(self.twitter_api.user_timeline, screen_name=twitter_handle).items(900):
+		for tweet in tweepy.Cursor(self.twitter_api.user_timeline, screen_name=twitter_handle).items(500):
 			sentiment = None
 			self.tweet_count += 1
 			tweet_text = json.dumps(tweet._json)
@@ -85,9 +86,14 @@ class MentalTruth:
 			self.sentiment_score += sentiment
 			print(self.sentiment_score[0])
 			print(self.tweet_count)
-		self.sentiment_score = self.sentiment_score / self.tweet_count
-		return (self.sentiment_score)
 
-# MT = MentalTruth('@xferreiraxo‏') #pilThelee, Time4Depression, Yunii_que, SaiMoorthy14, iDepressing, SelfHarmer13, montesinomay ‏
-# print('The sentiment score is: ' + str(MT.iterate_twitter())
-# print(MT.iterate_twitter()[0])
+		self.sentiment_score = self.sentiment_score / self.tweet_count
+
+		if self.sentiment_score < 0.9:
+			mt_score = 1 # Negative
+		elif (self.sentiment_score >= 0.9) and (self.sentiment_score < 0.97):
+			mt_score = 2 # Netural
+		else:
+			mt_score = 3 # Positive
+
+		return (mt_score)
