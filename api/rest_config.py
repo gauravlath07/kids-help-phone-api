@@ -1,3 +1,3 @@
-bind = '0.0.0.0:9612'
+bind = '0.0.0.0:5000'
 pidfile = './pid/rest.pid'
 TIMEOUT = '120'
