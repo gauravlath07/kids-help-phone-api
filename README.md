@@ -1,7 +1,11 @@
+<img align="right" src="https://github.com/gauravlath07/kids-help-phone-api/blob/master/gift_the_code.png" height="100" width="100">
+<img align="right" src="https://github.com/gauravlath07/kids-help-phone-api/blob/master/kids_help_phone.png" height="100" width="350">
+
+
 # Kids Help Phone (Alegra)
 
 
-## About
+# About
 <p>This app was developed at Gift The Code 2017 a hackathon organized for charity.<br>
 
 Alegra is a user friendly web dashboard which analyzes the mental state of a user according to their social media profiles using NLP and image classification.<br>
@@ -14,6 +18,6 @@ P.S. This repository only holds the backend repository for sentiment analysis of
 </p>
 
 
-## Technologies Used
+# Technologies Used
 For NLP we used Python's NLTK library. Training data was picked up from stanford database of 20,000 tweets each of them classified according to sentiment. <br>
 This model was deployed as an API on gunicorn and hosted on AWS EC2 instance.
